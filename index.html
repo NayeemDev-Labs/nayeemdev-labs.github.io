@@ -1,43 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="dark scroll-smooth antialiased selection:bg-neon-blue selection:text-white">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NayeemDev Labs | Architecting Intelligence</title>
-    <meta name="description" content="Founder of NayeemDev Labs. Architecting High-Efficiency AI, B200 Systems, and Privacy-First Software.">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO & META -->
+    <title>Nayeem Dev | Systems Architect & AI Engineer</title>
+    <meta name="description" content="Portfolio of Nayeem Dev. High-performance C++ Systems Architect and AI Engineer. Operating from Dhaka, Bangladesh.">
+    <meta name="keywords" content="Nayeem Dev, owneraniex, C++, System Architecture, AI, Dhaka, Bangladesh, PaperMC">
+    
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Nayeem Dev | God Mode Systems">
+    <meta property="og:description" content="Architecting Intelligence. C++ & AI Systems.">
+    
+    <!-- SCHEMA -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Nayeem Dev",
-      "alternateName": ["owneraniex", "NayeemDev Labs"],
-      "url": "https://nayeemdev-labs.github.io",
-      "jobTitle": "Founder & Lead AI Engineer",
-      "worksFor": {
-        "@type": "Organization",
-        "name": "NayeemDev Labs"
+      "alternateName": ["owneraniex"],
+      "jobTitle": "Systems Architect",
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Dhaka",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dhaka",
+          "addressCountry": "Bangladesh"
+        }
       },
-      "sameAs": [
-        "https://github.com/owneraniex",
-        "https://www.linkedin.com/in/nayeem-dev-41b5a136b/",
-        "https://x.com/owneraniex"
-      ],
-      "knowsAbout": ["Artificial Intelligence", "NVIDIA B200", "Robotics", "System Architecture", "Rust", "LLMs"]
+      "knowsAbout": ["C++", "C", "Artificial Intelligence", "System Architecture", "Rust", "Network Security"]
     }
     </script>
 
+    <!-- DEPENDENCIES -->
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
-
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- TAILWIND CONFIG -->
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
@@ -45,16 +54,26 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        'brand-bg': '#030305',
+                        'bg-main': '#030304',
                         'neon-blue': '#2997ff',
+                        'neon-cyan': '#00f3ff',
                         'neon-purple': '#bf5af2',
-                        'glass': 'rgba(255, 255, 255, 0.05)',
+                        'neon-yellow': '#FACC15',
                     },
                     animation: {
-                        'pulse-glow': 'pulse-glow 3s infinite',
+                        'pulse-fast': 'pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'slide-in': 'slideIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
                     },
                     keyframes: {
-                        'pulse-glow': { '0%, 100%': { opacity: '1', boxShadow: '0 0 20px #2997ff' }, '50%': { opacity: '.5', boxShadow: '0 0 5px #2997ff' } }
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-100px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        }
                     }
                 }
             }
@@ -62,289 +81,473 @@
     </script>
 
     <style>
-        /* CORE STYLES */
-        body { cursor: none; background-color: #030305; color: white; overflow-x: hidden; }
-        
-        /* CUSTOM CURSOR */
-        .cursor-dot { width: 8px; height: 8px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
-        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s; }
-        
-        /* MODAL ANIMATION */
-        #project-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
-        #project-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
-        #project-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
-        
-        /* GLASS CARDS */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* CORE RESET */
+        body { 
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
         }
-        .glass-card:hover { border-color: rgba(41, 151, 255, 0.3); transform: translateY(-5px); }
+
+        /* CUSTOM CURSOR */
+        @media (pointer: fine) {
+            body { cursor: none; }
+            #cursor-custom {
+                position: fixed;
+                top: 0; left: 0;
+                width: 20px; height: 20px;
+                border: 1px solid rgba(41, 151, 255, 0.5);
+                transform: translate(-50%, -50%) rotate(45deg);
+                pointer-events: none;
+                z-index: 10000;
+                transition: all 0.2s;
+                mix-blend-mode: difference;
+            }
+            #cursor-custom::after {
+                content: '';
+                position: absolute;
+                top: 50%; left: 50%;
+                width: 4px; height: 4px;
+                background: #00f3ff;
+                transform: translate(-50%, -50%);
+                border-radius: 50%;
+            }
+            body.hovering #cursor-custom {
+                width: 50px; height: 50px;
+                background: rgba(41, 151, 255, 0.1);
+                border-color: #00f3ff;
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+        }
+        @media (max-width: 768px) { #cursor-custom { display: none; } }
+
+        /* THEME STYLES */
         
-        .text-gradient { background: linear-gradient(to right, #2997ff, #bf5af2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        /* Dark Mode (Default) */
+        .dark body { background-color: #030304; color: #ffffff; }
+        .dark .glass-panel {
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Light Mode (God Tier White/Yellow/Blue) */
+        html:not(.dark) body { background-color: #ffffff; color: #0a0a0a; }
+        html:not(.dark) .glass-panel {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid #2997ff; /* Blue Border */
+            box-shadow: 10px 10px 0px rgba(250, 204, 21, 0.8); /* Yellow Neon Hard Shadow */
+            color: #000;
+        }
+        html:not(.dark) .text-glow {
+            text-shadow: 2px 2px 0px #FACC15; /* Yellow Shadow Text */
+            color: #2997ff;
+            background: none;
+            -webkit-text-fill-color: initial;
+        }
+        html:not(.dark) .scramble-text { color: #000; font-weight: 900; }
+        html:not(.dark) nav { background: rgba(255,255,255,0.9); border-bottom: 1px solid #e5e5e5; }
+
+        /* Scramble Effect */
+        .scramble-cursor {
+            display: inline-block; width: 10px; height: 1em;
+            background: #2997ff;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom; margin-left: 4px;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
     </style>
 </head>
 <body>
 
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
+    <div id="cursor-custom"></div>
 
-    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
-        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
-        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px]"></div>
+    <!-- BACKGROUNDS -->
+    <div class="fixed inset-0 z-0 pointer-events-none transition-opacity duration-500 dark:opacity-100 opacity-0">
+        <!-- Dark Mode BG -->
+        <div class="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-900/20 rounded-full blur-[120px] animate-float"></div>
+        <div class="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-purple-900/20 rounded-full blur-[120px] animate-float" style="animation-delay: -2s;"></div>
+        <div class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"></div>
+    </div>
+    
+    <div class="fixed inset-0 z-0 pointer-events-none transition-opacity duration-500 dark:opacity-0 opacity-100 bg-white">
+        <!-- Light Mode BG -->
+        <div class="absolute top-[10%] right-[10%] w-[400px] h-[400px] bg-yellow-300/20 rounded-full blur-[80px]"></div>
+        <div class="absolute bottom-[10%] left-[10%] w-[400px] h-[400px] bg-blue-300/20 rounded-full blur-[80px]"></div>
     </div>
 
-    <nav class="fixed w-full z-40 top-0 border-b border-white/5 bg-brand-bg/80 backdrop-blur-xl">
+    <!-- NAV -->
+    <nav class="fixed w-full z-50 top-0 border-b border-white/5 bg-bg-main/80 backdrop-blur-xl transition-all duration-300">
         <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-            <a href="#" class="font-bold text-xl tracking-tight flex items-center gap-2">
-                <div class="w-2 h-2 bg-neon-blue rounded-full animate-pulse"></div>
-                NAYEEMDEV_LABS
+            <a href="#" class="interactable font-bold text-lg tracking-tight flex items-center gap-3">
+                <div class="w-2 h-2 bg-neon-cyan shadow-[0_0_10px_#00f3ff] rounded-full"></div>
+                <span class="font-mono dark:text-gray-200 text-black">NAYEEM<span class="text-neon-blue">_DEV</span></span>
             </a>
-            <div class="flex gap-4">
-                <a href="https://github.com/owneraniex" target="_blank" class="text-sm font-mono text-gray-400 hover:text-white transition-colors">
-                    <i class="fab fa-github"></i> Source
+            <div class="flex items-center gap-4">
+                <button onclick="toggleTheme()" class="interactable w-10 h-10 rounded-full border dark:border-white/10 border-gray-200 flex items-center justify-center hover:bg-neon-blue hover:text-white transition-all">
+                    <i class="fas fa-sun dark:hidden"></i>
+                    <i class="fas fa-moon hidden dark:block"></i>
+                </button>
+                <a href="https://github.com/owneraniex" target="_blank" class="interactable text-xs font-mono border dark:border-white/10 border-black px-4 py-2 rounded-full hover:bg-neon-blue hover:text-white hover:border-neon-blue transition-all dark:text-white text-black">
+                    SOURCE
                 </a>
             </div>
         </div>
     </nav>
 
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative pt-20">
-        <div data-aos="zoom-in" data-aos-duration="1000">
-            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-blue/20 bg-neon-blue/5 text-neon-blue font-mono text-xs mb-8">
-                <span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse"></span>
-                SYSTEM ONLINE: B200 CLUSTER
+    <!-- HERO SECTION (Left Aligned & Animated) -->
+    <header class="min-h-[100dvh] flex flex-col justify-center px-6 md:px-20 relative z-10 pt-16">
+        
+        <div class="max-w-4xl opacity-0 animate-[slideIn_1s_ease-out_forwards]">
+            <!-- Status Pill -->
+            <div class="mb-8 inline-flex items-center gap-2 px-4 py-1.5 rounded-full border dark:border-white/5 border-black/10 dark:bg-white/5 bg-white backdrop-blur-md shadow-lg">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <span class="text-[10px] md:text-xs font-mono dark:text-gray-400 text-gray-600 tracking-widest uppercase">
+                    Dhaka, BD <span class="text-gray-400 px-2">|</span> Global Ops
+                </span>
             </div>
-            
-            <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-6 leading-none">
-                BUILDING <br>
-                <span class="text-gradient">GOD MODE</span>
+
+            <!-- Main Title -->
+            <h1 class="text-5xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 leading-[0.9] dark:text-white text-black text-left">
+                <div class="overflow-hidden">
+                    <span class="scramble-text inline-block" data-value="ARCHITECTING">ARCHITECTING</span>
+                </div>
+                <div class="overflow-hidden mt-2">
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-neon-blue via-neon-cyan to-neon-purple text-glow inline-block transform translate-y-0 transition-transform hover:skew-x-12 cursor-default">
+                        GOD MODE
+                    </span>
+                </div>
             </h1>
-            
-            <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                Architecting 1.5B models that rival <span class="text-white font-bold border-b border-white/20">Gemini 2.5 Pro</span>. <br>
-                Deploying High-Efficiency Agents on Consumer Hardware.
+
+            <p class="dark:text-gray-400 text-gray-700 text-lg md:text-2xl max-w-2xl mb-12 font-light leading-relaxed text-left opacity-0 animate-[slideIn_1s_ease-out_0.3s_forwards]">
+                I am <strong class="dark:text-white text-black">Nayeem Dev</strong>. Engineering high-efficiency <span class="text-neon-blue font-bold">C++ Systems</span> & 
+                deploying <span class="text-neon-purple font-bold">1.5B LLMs</span> on consumer hardware.
             </p>
 
-            <div class="flex gap-4 justify-center">
-                <a href="#projects" class="px-8 py-3 bg-white text-black font-bold rounded hover:bg-neon-blue hover:text-white transition-all">
-                    View Portfolio
+            <!-- CTAs -->
+            <div class="flex flex-col md:flex-row gap-4 w-full md:w-auto opacity-0 animate-[slideIn_1s_ease-out_0.6s_forwards]">
+                <a href="#projects" class="interactable relative px-8 py-4 bg-neon-blue text-white font-bold rounded-lg overflow-hidden group w-full md:w-auto text-center shadow-[5px_5px_0px_0px_#FACC15] hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all border border-neon-blue">
+                    <span class="relative z-10">VIEW OPERATIONS</span>
                 </a>
-                <a href="https://www.linkedin.com/in/nayeem-dev-41b5a136b/" target="_blank" class="px-8 py-3 border border-white/20 rounded hover:bg-white/5 transition-all">
-                    Contact Founder
+                <a href="https://x.com/owneraniex" target="_blank" class="interactable px-8 py-4 border dark:border-white/10 border-black rounded-lg hover:bg-black hover:text-white transition-all w-full md:w-auto font-mono text-sm flex justify-center items-center gap-2 dark:text-white text-black">
+                    <i class="fab fa-x-twitter"></i> @owneraniex
                 </a>
             </div>
         </div>
-    </section>
+        
+        <!-- Animated Graphic on Right (Desktop) -->
+        <div class="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full pointer-events-none opacity-20 dark:opacity-10">
+             <div class="w-full h-full bg-gradient-to-l from-neon-blue to-transparent skew-x-12"></div>
+        </div>
+    </header>
 
-    <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 flex items-center gap-3" data-aos="fade-right">
-            <span class="text-neon-purple">/</span> SELECTED WORKS
-        </h2>
+    <!-- INFO & PROJECTS GRID -->
+    <section id="projects" class="py-20 px-4 md:px-6 max-w-7xl mx-auto z-10 relative">
+        
+        <!-- About Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20">
+            <div class="md:col-span-3 glass-panel rounded-2xl p-8 md:p-12" data-tilt data-tilt-max="1">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-2 dark:text-white text-black">
+                    <i class="fas fa-terminal text-neon-blue"></i> SYSTEM_IDENTITY
+                </h3>
+                <p class="dark:text-gray-400 text-gray-700 leading-relaxed text-lg">
+                    Founder of <strong>NayeemDev Labs</strong>. I don't just write code; I architect systems. 
+                    Specializing in <span class="dark:text-white text-black font-bold">C/C++</span> for raw performance and <span class="dark:text-white text-black font-bold">Python</span> for AI Intelligence.
+                    Currently operating out of <span class="text-neon-blue">Dhaka</span>, optimizing the intersection of cryptography and neural networks.
+                </p>
+                <div class="mt-8 flex gap-6 text-3xl dark:text-gray-500 text-gray-400">
+                    <i class="fab fa-cuttlefish hover:text-blue-500 transition-colors"></i>
+                    <i class="fas fa-microchip hover:text-neon-purple transition-colors"></i>
+                    <i class="fab fa-python hover:text-yellow-500 transition-colors"></i>
+                    <i class="fab fa-linux hover:text-white transition-colors"></i>
+                </div>
+            </div>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[300px]">
+        <!-- Section Title -->
+        <div class="flex items-end gap-4 mb-10 border-b dark:border-white/5 border-black/10 pb-4">
+            <h2 class="text-4xl md:text-6xl font-bold dark:text-white text-black">WORKS</h2>
+            <span class="font-mono text-neon-blue text-sm mb-2">/ SELECTED_PROJECTS</span>
+        </div>
 
-            <div onclick="openModal('blackwell')" class="glass-card md:col-span-2 md:row-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-tilt-max="3" data-aos="fade-up" data-aos-delay="0">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <div class="relative z-10 flex flex-col h-full justify-between">
-                    <div class="flex justify-between items-start">
-                        <div class="p-3 bg-white/5 rounded-xl border border-white/10"><i class="fas fa-brain text-3xl text-neon-blue"></i></div>
-                        <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-bold rounded border border-neon-blue/30 animate-pulse">GEMINI KILLER</span>
+        <!-- PROJECTS BENTO GRID -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[minmax(250px,auto)]">
+
+            <!-- BLACKWELL (Hero Project) - 2x2 -->
+            <div onclick="openModal('blackwell')" class="interactable glass-panel md:col-span-2 md:row-span-2 rounded-2xl p-8 relative overflow-hidden group cursor-pointer flex flex-col justify-between" data-tilt data-tilt-glare data-tilt-max-glare="0.2">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-neon-blue/10 rounded-full blur-[80px] group-hover:bg-neon-blue/20 transition-all"></div>
+                
+                <div class="relative z-10">
+                    <div class="flex justify-between items-start mb-8">
+                        <i class="fas fa-microchip text-5xl text-neon-blue"></i>
+                        <span class="px-2 py-1 border border-neon-blue/30 text-neon-blue text-[10px] font-bold tracking-widest rounded bg-neon-blue/5">AI_MODEL</span>
                     </div>
-                    <div>
-                        <h3 class="text-4xl font-bold mb-2 group-hover:text-neon-blue transition-colors">Nayeem-Blackwell</h3>
-                        <p class="text-gray-400 mb-4">1.5B Parameter SLM. Fine-tuned to match Gemini 2.5 Pro performance in coding & logic.</p>
-                        <div class="flex gap-2 text-xs font-mono text-gray-500">
-                            <span class="bg-white/5 px-2 py-1 rounded">B200</span>
-                            <span class="bg-white/5 px-2 py-1 rounded">Unsloth</span>
-                        </div>
+                    <h3 class="text-4xl font-bold mb-3 dark:text-white text-black group-hover:text-neon-blue transition-colors">Nayeem-Blackwell</h3>
+                    <p class="dark:text-gray-400 text-gray-600 text-lg">1.5B Parameter Model. Fine-tuned on B200 architecture to rival Gemini 2.5 Pro.</p>
+                </div>
+                <div class="relative z-10 mt-6 flex gap-2">
+                     <span class="px-3 py-1 bg-white/5 border dark:border-white/10 border-black/10 rounded-full text-xs font-mono dark:text-gray-300 text-gray-700">PyTorch</span>
+                     <span class="px-3 py-1 bg-white/5 border dark:border-white/10 border-black/10 rounded-full text-xs font-mono dark:text-gray-300 text-gray-700">CUDA</span>
+                </div>
+            </div>
+
+            <!-- TITAN DL - 2x1 -->
+            <div onclick="openModal('titan')" class="interactable glass-panel md:col-span-2 rounded-2xl p-8 relative overflow-hidden group cursor-pointer flex flex-col justify-center" data-tilt>
+                <div class="flex justify-between items-center mb-4">
+                    <i class="fas fa-bolt text-3xl text-yellow-400"></i>
+                    <i class="fas fa-arrow-right -rotate-45 text-gray-500 group-hover:dark:text-white group-hover:text-black transition-colors"></i>
+                </div>
+                <h3 class="text-2xl font-bold dark:text-white text-black">TitanDL Engine</h3>
+                <p class="dark:text-gray-400 text-gray-600 text-sm mt-1 font-mono">C++ MULTI-THREADED CORE</p>
+                <div class="w-full bg-gray-800 h-1 rounded-full overflow-hidden mt-6">
+                    <div class="bg-yellow-400 h-full w-[0%] group-hover:w-[100%] transition-all duration-700 ease-out"></div>
+                </div>
+            </div>
+
+            <!-- TEMBA (Browser) - 2x1 -->
+            <div onclick="openModal('temba')" class="interactable glass-panel md:col-span-2 rounded-2xl p-8 flex items-center justify-between group cursor-pointer" data-tilt>
+                <div>
+                    <h3 class="text-2xl font-bold dark:text-white text-black mb-1">Temba Browser</h3>
+                    <p class="dark:text-gray-400 text-gray-600 text-xs font-mono mb-4">C++ / QT FRAMEWORK</p>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 dark:bg-white/5 bg-black/5 rounded-full border dark:border-white/10 border-black/10">
+                        <div class="w-1.5 h-1.5 bg-red-500 rounded-full animate-pulse"></div>
+                        <span class="text-[10px] dark:text-gray-300 text-gray-700">MINING_NODE: ACTIVE</span>
                     </div>
                 </div>
+                <i class="fas fa-shield-halved text-5xl dark:text-gray-800 text-gray-200 group-hover:dark:text-white/10 group-hover:text-gray-400 transition-colors"></i>
             </div>
 
-            <div onclick="openModal('titan')" class="glass-card md:col-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-left" data-aos-delay="100">
-                <div class="relative z-10">
-                    <i class="fas fa-bolt text-2xl text-yellow-400 mb-12 block"></i>
-                    <h3 class="text-2xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">TitanDL Engine</h3>
-                    <p class="text-gray-400 text-sm">Multi-threaded media downloader. 100% Bandwidth Saturation.</p>
+             <!-- SHADOWCORD (Agent) - 4x1 Full Width -->
+             <div onclick="openModal('shadow')" class="interactable glass-panel md:col-span-4 rounded-2xl p-8 relative overflow-hidden group cursor-pointer flex items-center gap-8" data-tilt>
+                <i class="fab fa-discord text-4xl text-indigo-400"></i>
+                <div>
+                    <h3 class="text-2xl font-bold dark:text-white text-black">ShadowCord</h3>
+                    <p class="dark:text-gray-500 text-gray-600 text-sm">Autonomous Moderation Agent using Vector DB.</p>
                 </div>
-            </div>
-
-            <div onclick="openModal('temba')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="200">
-                <div class="relative z-10">
-                    <i class="fas fa-globe text-2xl text-green-400 mb-12 block"></i>
-                    <h3 class="text-xl font-bold mb-1">Temba</h3>
-                    <p class="text-gray-500 text-xs">Privacy browser + Crypto Node.</p>
-                </div>
-            </div>
-
-            <div onclick="openModal('senzor')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="300">
-                <div class="relative z-10">
-                    <i class="fas fa-eye text-2xl text-red-500 mb-12 block"></i>
-                    <h3 class="text-xl font-bold mb-1">Senzor</h3>
-                    <p class="text-gray-500 text-xs">Real-time system monitoring.</p>
-                </div>
-            </div>
-
-            <div onclick="openModal('shadow')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="400">
-                <div class="relative z-10">
-                    <i class="fab fa-discord text-2xl text-indigo-400 mb-12 block"></i>
-                    <h3 class="text-xl font-bold mb-1">ShadowCord</h3>
-                    <p class="text-gray-500 text-xs">Autonomous AI Discord Agent.</p>
-                </div>
-            </div>
-
-            <div onclick="openModal('piuple')" class="glass-card md:col-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-left" data-aos-delay="500">
-                <div class="flex justify-between items-center h-full">
-                    <div>
-                        <h3 class="text-2xl font-bold mb-1 group-hover:text-pink-500 transition-colors">Piuple</h3>
-                        <p class="text-gray-400 text-sm">Decentralized social architecture.</p>
-                    </div>
-                    <i class="fas fa-users text-4xl text-pink-500/20 group-hover:text-pink-500 transition-colors"></i>
-                </div>
-            </div>
-            
-             <div onclick="openModal('zenith')" class="glass-card md:col-span-1 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="zoom-in" data-aos-delay="600">
-                 <div class="relative z-10">
-                    <i class="fas fa-hammer text-2xl text-orange-500 mb-6 block"></i>
-                    <h3 class="text-xl font-bold mb-1">Zenith</h3>
-                    <p class="text-gray-500 text-xs">High-Efficiency Miner.</p>
+                <div class="ml-auto dark:text-white/20 text-black/20 text-6xl font-bold font-mono group-hover:translate-x-4 transition-transform">
+                    AGI
                 </div>
             </div>
 
         </div>
     </section>
 
-    <footer class="border-t border-white/5 bg-black py-12 mt-20">
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 dark:bg-black bg-white py-12 relative z-10 transition-colors duration-500">
         <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-center md:text-left">
-                <h4 class="font-bold text-lg tracking-tight">NAYEEMDEV LABS</h4>
-                <p class="text-gray-500 text-sm">Badarganj, Bangladesh • Est. 2025</p>
+                <h4 class="font-bold text-xl tracking-tight dark:text-white text-black">NAYEEMDEV LABS</h4>
+                <p class="dark:text-gray-600 text-gray-400 text-xs mt-1">Dhaka HQ. Systems Nominal.</p>
             </div>
-            <div class="flex gap-8">
-                <a href="https://github.com/owneraniex" target="_blank" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
-                    <i class="fab fa-github text-2xl"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/nayeem-dev-41b5a136b/" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors transform hover:scale-110">
-                    <i class="fab fa-linkedin text-2xl"></i>
-                </a>
-                <a href="https://x.com/owneraniex" target="_blank" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
-                    <i class="fab fa-x-twitter text-2xl"></i>
-                </a>
+            <div class="flex gap-4">
+                <a href="https://github.com/owneraniex" target="_blank" class="interactable dark:text-gray-400 text-gray-600 hover:text-neon-blue transition-colors"><i class="fab fa-github text-xl"></i></a>
+                <a href="https://x.com/owneraniex" target="_blank" class="interactable dark:text-gray-400 text-gray-600 hover:text-neon-blue transition-colors"><i class="fab fa-x-twitter text-xl"></i></a>
             </div>
         </div>
     </footer>
 
-    <div id="project-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md hidden-modal p-4">
-        <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl transform transition-all scale-100">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
-                <i class="fas fa-times text-2xl"></i>
+    <!-- MODAL OVERLAY -->
+    <div id="project-modal" class="fixed inset-0 z-[100] flex items-end md:items-center justify-center pointer-events-none opacity-0 transition-all duration-300">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closeModal()"></div>
+        
+        <div id="modal-panel" class="relative dark:bg-[#0a0a0c] bg-white border dark:border-white/10 border-gray-200 w-full md:max-w-2xl md:rounded-2xl rounded-t-2xl p-8 transform translate-y-full md:translate-y-10 transition-transform duration-300 shadow-2xl">
+            <button onclick="closeModal()" class="interactable absolute top-4 right-4 dark:text-gray-500 text-gray-400 hover:text-neon-blue p-2">
+                <i class="fas fa-times text-xl"></i>
             </button>
-            <div id="modal-content">
-                <h2 id="m-title" class="text-3xl font-bold mb-2 text-white">Project Title</h2>
-                <span id="m-badge" class="px-2 py-1 bg-white/10 text-xs font-mono rounded text-neon-blue mb-4 inline-block">AI MODEL</span>
-                <p id="m-desc" class="text-gray-300 leading-relaxed mb-6">Description.</p>
-                <div class="border-t border-white/10 pt-4">
-                    <h4 class="text-sm font-bold text-gray-500 mb-2">TECH STACK</h4>
-                    <div id="m-stack" class="flex gap-2 flex-wrap"></div>
-                </div>
-                <div class="mt-8">
-                    <a href="https://github.com/owneraniex" target="_blank" class="block w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-neon-blue hover:text-white transition-all">
-                        View Code on GitHub
-                    </a>
-                </div>
+            
+            <div class="mb-6">
+                <span id="m-badge" class="text-[10px] font-mono border dark:border-white/20 border-black/20 px-2 py-1 rounded text-neon-blue uppercase">Badge</span>
+                <h2 id="m-title" class="text-3xl md:text-4xl font-bold dark:text-white text-black mt-3 mb-2">Project Title</h2>
+                <div class="w-12 h-1 bg-neon-blue rounded-full mb-6"></div>
+                <p id="m-desc" class="dark:text-gray-300 text-gray-700 leading-relaxed font-light">Description.</p>
+            </div>
+
+            <div class="border-t dark:border-white/10 border-black/10 pt-6">
+                <h4 class="text-xs font-bold text-gray-500 mb-4 font-mono">STACK_TRACE</h4>
+                <div id="m-stack" class="flex gap-2 flex-wrap mb-8"></div>
+                <a href="https://github.com/owneraniex" target="_blank" class="interactable block w-full py-4 bg-neon-blue text-white font-bold text-center rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
+                    ACCESS SOURCE CODE
+                </a>
             </div>
         </div>
     </div>
 
+    <!-- SCRIPTS -->
     <script>
-        // 1. DATA
+        // 1. DATA STORE (Removed NYWelcomer & Server Status)
         const projects = {
             'blackwell': {
                 title: "Nayeem-Blackwell-1.5B",
-                badge: "GEMINI 2.5 PRO COMPETITOR",
-                desc: "The flagship project. A 1.5 Billion parameter model fine-tuned on the NVIDIA B200 architecture. It leverages custom datasets (Turso, Vibe Coding) to outperform Gemini 2.5 Pro in specific coding and cybersecurity benchmarks. Features agentic tool use and live internet access.",
-                stack: ["Python", "PyTorch", "Unsloth", "CUDA", "B200"]
+                badge: "AI ARCHITECTURE",
+                desc: "A custom 1.5 Billion parameter SLM (Small Language Model) engineered for edge computing. Fine-tuned on the NVIDIA B200 architecture using unsloth optimization to outperform Gemini 2.5 Pro in logic tasks while consuming 40% less VRAM.",
+                stack: ["Python", "PyTorch", "C++ (CUDA)", "Unsloth"]
             },
             'titan': {
                 title: "TitanDL Engine",
                 badge: "SYSTEMS ENGINEERING",
-                desc: "A Rust-based media downloader engine designed for maximum concurrency. TitanDL bypasses throttling by opening multiple thread streams, saturating network bandwidth to 99%. Used for enterprise-grade data scraping and media archiving.",
-                stack: ["Rust", "Actix", "Tokio", "FFmpeg"]
+                desc: "A high-performance media downloader written in C++. TitanDL utilizes raw socket manipulation to open 32+ concurrent streams, bypassing server-side throttling and saturating available bandwidth up to 99%.",
+                stack: ["C++", "Boost.Asio", "Multi-threading", "FFmpeg"]
             },
             'temba': {
                 title: "Temba Browser",
-                badge: "PRIVACY & CRYPTO",
-                desc: "A lightweight Linux browser that blocks ads at the kernel level. Temba features a built-in background node that mines crypto efficiently while you browse, without impacting UI performance.",
-                stack: ["C++", "Qt", "Blockchain", "Linux"]
+                badge: "PRIVACY TOOL",
+                desc: "A privacy-focused web browser built on the Qt framework (C++). It features a unique kernel-level ad blocker and a background process that utilizes idle CPU cycles for lightweight crypto mining.",
+                stack: ["C++", "Qt Framework", "OpenSSL", "Linux"]
             },
             'shadow': {
                 title: "ShadowCord",
-                badge: "AI AGENT",
-                desc: "Not just a chatbot. ShadowCord is an autonomous Discord administrator that can detect raids, moderate toxic behavior, and answer technical support queries using RAG (Retrieval Augmented Generation).",
-                stack: ["Node.js", "Discord.js", "OpenAI API", "Vector DB"]
-            },
-            'zenith': {
-                title: "Zenith Miner",
-                badge: "BLOCKCHAIN",
-                desc: "An experimental high-efficiency miner optimized for low-power devices. Uses custom algorithm switching to find the most profitable coin to mine in real-time.",
-                stack: ["C", "CUDA", "Stratum Protocol"]
-            },
-            'senzor': {
-                title: "Senzor",
-                badge: "SECURITY",
-                desc: "A real-time system monitoring dashboard. Visualizes network traffic, CPU loads, and detects intrusion attempts instantly via heuristic analysis.",
-                stack: ["Go", "React", "WebSockets"]
-            },
-            'piuple': {
-                title: "Piuple",
-                badge: "DECENTRALIZED SOCIAL",
-                desc: "A decentralized social platform architecture. Piuple focuses on encrypted messaging and owning your own social graph, free from algorithm manipulation.",
-                stack: ["TypeScript", "Next.js", "IPFS", "GunDB"]
+                badge: "INTELLIGENT AGENT",
+                desc: "An autonomous Discord bot that acts as a server administrator. It uses vector databases to recall server rules and past conversations, effectively moderating toxic behavior without human intervention.",
+                stack: ["Node.js", "C++ Addons", "Vector DB", "Discord API"]
             }
         };
 
-        // 2. MODAL FUNCTIONS
+        // 2. TEXT SCRAMBLE EFFECT
+        class TextScramble {
+            constructor(el) {
+                this.el = el;
+                this.chars = '!<>-_\\/[]{}—=+*^?#________';
+                this.update = this.update.bind(this);
+            }
+            setText(newText) {
+                const oldText = this.el.innerText;
+                const length = Math.max(oldText.length, newText.length);
+                const promise = new Promise((resolve) => this.resolve = resolve);
+                this.queue = [];
+                for (let i = 0; i < length; i++) {
+                    const from = oldText[i] || '';
+                    const to = newText[i] || '';
+                    const start = Math.floor(Math.random() * 40);
+                    const end = start + Math.floor(Math.random() * 40);
+                    this.queue.push({ from, to, start, end });
+                }
+                cancelAnimationFrame(this.frameRequest);
+                this.frame = 0;
+                this.update();
+                return promise;
+            }
+            update() {
+                let output = '';
+                let complete = 0;
+                for (let i = 0, n = this.queue.length; i < n; i++) {
+                    let { from, to, start, end, char } = this.queue[i];
+                    if (this.frame >= end) {
+                        complete++;
+                        output += to;
+                    } else if (this.frame >= start) {
+                        if (!char || Math.random() < 0.28) {
+                            char = this.randomChar();
+                            this.queue[i].char = char;
+                        }
+                        output += `<span class="text-neon-blue">${char}</span>`;
+                    } else {
+                        output += from;
+                    }
+                }
+                this.el.innerHTML = output;
+                if (complete === this.queue.length) {
+                    this.resolve();
+                } else {
+                    this.frameRequest = requestAnimationFrame(this.update);
+                    this.frame++;
+                }
+            }
+            randomChar() {
+                return this.chars[Math.floor(Math.random() * this.chars.length)];
+            }
+        }
+
+        const el = document.querySelector('.scramble-text');
+        const fx = new TextScramble(el);
+        const next = () => {
+            fx.setText('ARCHITECTING').then(() => {
+                setTimeout(next, 5000); 
+            });
+        };
+        setTimeout(next, 500);
+
+        // 3. THEME LOGIC
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Init Theme
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else {
+            document.documentElement.classList.add('dark');
+        }
+
+        // 4. CURSOR LOGIC
+        const cursor = document.getElementById('cursor-custom');
+        const interactables = document.querySelectorAll('.interactable');
+        
+        if (window.matchMedia("(pointer: fine)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+                el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+            });
+            document.addEventListener('mousedown', () => cursor.style.transform = "translate(-50%, -50%) rotate(45deg) scale(0.8)");
+            document.addEventListener('mouseup', () => cursor.style.transform = "translate(-50%, -50%) rotate(45deg) scale(1)");
+        }
+
+        // 5. MODAL LOGIC
+        const modal = document.getElementById('project-modal');
+        const modalPanel = document.getElementById('modal-panel');
+
         function openModal(id) {
             const data = projects[id];
-            const modal = document.getElementById('project-modal');
-            
             document.getElementById('m-title').innerText = data.title;
             document.getElementById('m-badge').innerText = data.badge;
             document.getElementById('m-desc').innerText = data.desc;
             
-            const stackContainer = document.getElementById('m-stack');
-            stackContainer.innerHTML = '';
+            const stack = document.getElementById('m-stack');
+            stack.innerHTML = '';
             data.stack.forEach(tech => {
-                stackContainer.innerHTML += `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-400">${tech}</span>`;
+                stack.innerHTML += `<span class="text-[10px] font-mono dark:bg-white/5 bg-gray-100 border dark:border-white/10 border-gray-300 px-2 py-1 rounded dark:text-gray-300 text-gray-800">${tech}</span>`;
             });
 
-            modal.classList.remove('hidden-modal');
-            modal.classList.add('visible-modal');
+            modal.style.pointerEvents = "auto";
+            modal.style.opacity = "1";
+            requestAnimationFrame(() => {
+                modalPanel.classList.remove('translate-y-full', 'md:translate-y-10');
+                modalPanel.classList.add('translate-y-0');
+            });
         }
 
         function closeModal() {
-            const modal = document.getElementById('project-modal');
-            modal.classList.remove('visible-modal');
-            modal.classList.add('hidden-modal');
+            modalPanel.classList.add('translate-y-full', 'md:translate-y-10');
+            modalPanel.classList.remove('translate-y-0');
+            setTimeout(() => {
+                modal.style.opacity = "0";
+                modal.style.pointerEvents = "none";
+            }, 300);
         }
 
-        document.getElementById('project-modal').addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
+        // 6. INIT LIBRARIES
+        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), {
+            max: 5,
+            speed: 400,
+            glare: true,
+            "max-glare": 0.2,
+            scale: 1.02
         });
-
-        // 3. INIT LIBRARIES
-        AOS.init({ once: true, offset: 50, duration: 800 });
-
-        // 4. CURSOR LOGIC
-        const cursorDot = document.querySelector('.cursor-dot');
-        const cursorOutline = document.querySelector('.cursor-outline');
-        window.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-            cursorOutline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 500, fill: "forwards" });
-        });
+        
+        AOS.init({ once: true, offset: 50 });
     </script>
 </body>
 </html>
