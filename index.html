@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NayeemDev Labs - High-Efficiency AI Research, Robotics, and Blackwell 1.5B Models.">
     <title>NayeemDev Labs | Architecting Intelligence</title>
-    
+    <meta name="description" content="Founder of NayeemDev Labs. Architecting High-Efficiency AI, B200 Systems, and Privacy-First Software.">
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "NayeemDev Labs",
+      "@type": "Person",
+      "name": "Nayeem Dev",
+      "alternateName": ["owneraniex", "NayeemDev Labs"],
       "url": "https://nayeemdev-labs.github.io",
-      "logo": "https://avatars.githubusercontent.com/u/YOUR_USER_ID",
-      "founder": { "@type": "Person", "name": "Nayeem Dev", "jobTitle": "Lead AI Engineer" },
-      "description": "Specialized in High-Efficiency SLMs, Embodied AI, and B200 Blackwell Architecture."
+      "jobTitle": "Founder & Lead AI Engineer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "NayeemDev Labs"
+      },
+      "sameAs": [
+        "https://github.com/owneraniex",
+        "https://www.linkedin.com/in/nayeem-dev-41b5a136b/",
+        "https://x.com/owneraniex"
+      ],
+      "knowsAbout": ["Artificial Intelligence", "NVIDIA B200", "Robotics", "System Architecture", "Rust", "LLMs"]
     }
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -32,18 +45,16 @@
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        'neon-blue': '#00f3ff',
-                        'neon-purple': '#bc13fe',
-                        'deep-bg': '#030305',
-                        'glass': 'rgba(255, 255, 255, 0.03)',
+                        'brand-bg': '#030305',
+                        'neon-blue': '#2997ff',
+                        'neon-purple': '#bf5af2',
+                        'glass': 'rgba(255, 255, 255, 0.05)',
                     },
                     animation: {
-                        'marquee': 'marquee 25s linear infinite',
-                        'pulse-glow': 'pulse-glow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-glow': 'pulse-glow 3s infinite',
                     },
                     keyframes: {
-                        marquee: { '0%': { transform: 'translateX(0)' }, '100%': { transform: 'translateX(-50%)' } },
-                        'pulse-glow': { '0%, 100%': { opacity: '1', boxShadow: '0 0 20px #00f3ff' }, '50%': { opacity: '.5', boxShadow: '0 0 5px #00f3ff' } }
+                        'pulse-glow': { '0%, 100%': { opacity: '1', boxShadow: '0 0 20px #2997ff' }, '50%': { opacity: '.5', boxShadow: '0 0 5px #2997ff' } }
                     }
                 }
             }
@@ -51,290 +62,289 @@
     </script>
 
     <style>
-        body { background-color: #030305; color: #ffffff; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #030305; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+        /* CORE STYLES */
+        body { cursor: none; background-color: #030305; color: white; overflow-x: hidden; }
         
-        .bento-card {
-            background: rgba(255, 255, 255, 0.02);
+        /* CUSTOM CURSOR */
+        .cursor-dot { width: 8px; height: 8px; background: white; border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+        .cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.1s; }
+        
+        /* MODAL ANIMATION */
+        #project-modal { transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #project-modal.hidden-modal { opacity: 0; visibility: hidden; pointer-events: none; }
+        #project-modal.visible-modal { opacity: 1; visibility: visible; pointer-events: auto; }
+        
+        /* GLASS CARDS */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .bento-card:hover {
-            border-color: rgba(0, 243, 255, 0.3);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 40px -10px rgba(0, 243, 255, 0.1);
-        }
+        .glass-card:hover { border-color: rgba(41, 151, 255, 0.3); transform: translateY(-5px); }
         
-        .gradient-text {
-            background: linear-gradient(to right, #00f3ff, #bc13fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        .text-gradient { background: linear-gradient(to right, #2997ff, #bf5af2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
-<body class="overflow-x-hidden selection:bg-neon-blue selection:text-black">
+<body>
 
-    <canvas id="neural-canvas" class="fixed inset-0 w-full h-full -z-10 opacity-20"></canvas>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <nav class="fixed w-full z-50 border-b border-white/5 bg-deep-bg/80 backdrop-blur-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-mono font-bold text-xl tracking-tighter">
-                <span class="text-neon-blue">NAYEEM</span>DEV<span class="text-neon-purple">_LABS</span>
-            </div>
-            <div class="hidden md:flex gap-8 text-sm font-mono text-gray-400">
-                <a href="#about" class="hover:text-neon-blue transition-colors">/ABOUT</a>
-                <a href="#stack" class="hover:text-neon-blue transition-colors">/STACK</a>
-                <a href="#projects" class="hover:text-neon-blue transition-colors">/PROJECTS</a>
-                <a href="#contact" class="hover:text-neon-blue transition-colors">/CONTACT</a>
-            </div>
-            <a href="https://github.com/NayeemDev-Labs" class="px-4 py-1.5 border border-white/10 rounded font-mono text-xs hover:bg-white/5 transition-all">
-                STATUS: <span class="text-green-400">ONLINE</span>
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[120px]"></div>
+    </div>
+
+    <nav class="fixed w-full z-40 top-0 border-b border-white/5 bg-brand-bg/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <a href="#" class="font-bold text-xl tracking-tight flex items-center gap-2">
+                <div class="w-2 h-2 bg-neon-blue rounded-full animate-pulse"></div>
+                NAYEEMDEV_LABS
             </a>
+            <div class="flex gap-4">
+                <a href="https://github.com/owneraniex" target="_blank" class="text-sm font-mono text-gray-400 hover:text-white transition-colors">
+                    <i class="fab fa-github"></i> Source
+                </a>
+            </div>
         </div>
     </nav>
 
-    <section class="min-h-screen flex items-center justify-center pt-20 relative">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-neon-blue/10 rounded-full blur-[120px] -z-10"></div>
-        
-        <div class="text-center px-6 max-w-5xl">
-            <div class="inline-block mb-6 px-4 py-1 rounded-full border border-neon-blue/30 bg-neon-blue/5 text-neon-blue font-mono text-sm">
-                ✨ ARCHITECTING THE SENTIENT WEB
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative pt-20">
+        <div data-aos="zoom-in" data-aos-duration="1000">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-neon-blue/20 bg-neon-blue/5 text-neon-blue font-mono text-xs mb-8">
+                <span class="w-2 h-2 rounded-full bg-neon-blue animate-pulse"></span>
+                SYSTEM ONLINE: B200 CLUSTER
             </div>
-            <h1 class="text-5xl md:text-8xl font-bold tracking-tight mb-6 leading-tight">
-                BUILDING <span class="gradient-text">GOD MODE</span> <br>
-                AI AGENTS
+            
+            <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-6 leading-none">
+                BUILDING <br>
+                <span class="text-gradient">GOD MODE</span>
             </h1>
+            
             <p class="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                Specialized in <span class="text-white">B200 Blackwell</span> fine-tuning, High-Efficiency SLMs, and Embodied Robotics. 
-                Replacing 100-person teams with one cup of coffee.
+                Architecting 1.5B models that rival <span class="text-white font-bold border-b border-white/20">Gemini 2.5 Pro</span>. <br>
+                Deploying High-Efficiency Agents on Consumer Hardware.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center font-mono">
-                <a href="#projects" class="px-8 py-4 bg-white text-black font-bold hover:bg-neon-blue hover:scale-105 transition-all rounded">
-                    VIEW PORTFOLIO
+
+            <div class="flex gap-4 justify-center">
+                <a href="#projects" class="px-8 py-3 bg-white text-black font-bold rounded hover:bg-neon-blue hover:text-white transition-all">
+                    View Portfolio
                 </a>
-                <a href="https://github.com/NayeemDev-Labs" class="px-8 py-4 border border-white/20 hover:border-neon-purple hover:text-neon-purple transition-all rounded">
-                    GITHUB ACCESS
+                <a href="https://www.linkedin.com/in/nayeem-dev-41b5a136b/" target="_blank" class="px-8 py-3 border border-white/20 rounded hover:bg-white/5 transition-all">
+                    Contact Founder
                 </a>
             </div>
         </div>
     </section>
 
-    <div class="w-full bg-white/5 border-y border-white/5 py-8 overflow-hidden">
-        <div class="flex w-[200%] animate-marquee whitespace-nowrap">
-            <div class="flex gap-16 mx-8 text-gray-500 font-mono text-xl items-center">
-                <span><i class="fab fa-python text-yellow-300 mr-2"></i>PYTHON</span>
-                <span><i class="fab fa-rust text-orange-500 mr-2"></i>RUST</span>
-                <span><i class="fas fa-microchip text-green-400 mr-2"></i>CUDA</span>
-                <span><i class="fas fa-brain text-neon-purple mr-2"></i>PYTORCH</span>
-                <span><i class="fab fa-docker text-blue-500 mr-2"></i>DOCKER</span>
-                <span><i class="fas fa-database text-neon-blue mr-2"></i>TURSO</span>
-                <span><i class="fab fa-linux text-white mr-2"></i>LINUX</span>
-                <span><i class="fas fa-robot text-pink-500 mr-2"></i>ROBOTICS</span>
+    <section id="projects" class="py-20 px-6 max-w-7xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 flex items-center gap-3" data-aos="fade-right">
+            <span class="text-neon-purple">/</span> SELECTED WORKS
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-[300px]">
+
+            <div onclick="openModal('blackwell')" class="glass-card md:col-span-2 md:row-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-tilt-max="3" data-aos="fade-up" data-aos-delay="0">
+                <div class="absolute inset-0 bg-gradient-to-br from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <div class="relative z-10 flex flex-col h-full justify-between">
+                    <div class="flex justify-between items-start">
+                        <div class="p-3 bg-white/5 rounded-xl border border-white/10"><i class="fas fa-brain text-3xl text-neon-blue"></i></div>
+                        <span class="px-3 py-1 bg-neon-blue/20 text-neon-blue text-xs font-bold rounded border border-neon-blue/30 animate-pulse">GEMINI KILLER</span>
+                    </div>
+                    <div>
+                        <h3 class="text-4xl font-bold mb-2 group-hover:text-neon-blue transition-colors">Nayeem-Blackwell</h3>
+                        <p class="text-gray-400 mb-4">1.5B Parameter SLM. Fine-tuned to match Gemini 2.5 Pro performance in coding & logic.</p>
+                        <div class="flex gap-2 text-xs font-mono text-gray-500">
+                            <span class="bg-white/5 px-2 py-1 rounded">B200</span>
+                            <span class="bg-white/5 px-2 py-1 rounded">Unsloth</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-16 mx-8 text-gray-500 font-mono text-xl items-center">
-                <span><i class="fab fa-python text-yellow-300 mr-2"></i>PYTHON</span>
-                <span><i class="fab fa-rust text-orange-500 mr-2"></i>RUST</span>
-                <span><i class="fas fa-microchip text-green-400 mr-2"></i>CUDA</span>
-                <span><i class="fas fa-brain text-neon-purple mr-2"></i>PYTORCH</span>
-                <span><i class="fab fa-docker text-blue-500 mr-2"></i>DOCKER</span>
-                <span><i class="fas fa-database text-neon-blue mr-2"></i>TURSO</span>
-                <span><i class="fab fa-linux text-white mr-2"></i>LINUX</span>
-                <span><i class="fas fa-robot text-pink-500 mr-2"></i>ROBOTICS</span>
+
+            <div onclick="openModal('titan')" class="glass-card md:col-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-left" data-aos-delay="100">
+                <div class="relative z-10">
+                    <i class="fas fa-bolt text-2xl text-yellow-400 mb-12 block"></i>
+                    <h3 class="text-2xl font-bold mb-2 group-hover:text-yellow-400 transition-colors">TitanDL Engine</h3>
+                    <p class="text-gray-400 text-sm">Multi-threaded media downloader. 100% Bandwidth Saturation.</p>
+                </div>
+            </div>
+
+            <div onclick="openModal('temba')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="200">
+                <div class="relative z-10">
+                    <i class="fas fa-globe text-2xl text-green-400 mb-12 block"></i>
+                    <h3 class="text-xl font-bold mb-1">Temba</h3>
+                    <p class="text-gray-500 text-xs">Privacy browser + Crypto Node.</p>
+                </div>
+            </div>
+
+            <div onclick="openModal('senzor')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="300">
+                <div class="relative z-10">
+                    <i class="fas fa-eye text-2xl text-red-500 mb-12 block"></i>
+                    <h3 class="text-xl font-bold mb-1">Senzor</h3>
+                    <p class="text-gray-500 text-xs">Real-time system monitoring.</p>
+                </div>
+            </div>
+
+            <div onclick="openModal('shadow')" class="glass-card rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-up" data-aos-delay="400">
+                <div class="relative z-10">
+                    <i class="fab fa-discord text-2xl text-indigo-400 mb-12 block"></i>
+                    <h3 class="text-xl font-bold mb-1">ShadowCord</h3>
+                    <p class="text-gray-500 text-xs">Autonomous AI Discord Agent.</p>
+                </div>
+            </div>
+
+            <div onclick="openModal('piuple')" class="glass-card md:col-span-2 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="fade-left" data-aos-delay="500">
+                <div class="flex justify-between items-center h-full">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-1 group-hover:text-pink-500 transition-colors">Piuple</h3>
+                        <p class="text-gray-400 text-sm">Decentralized social architecture.</p>
+                    </div>
+                    <i class="fas fa-users text-4xl text-pink-500/20 group-hover:text-pink-500 transition-colors"></i>
+                </div>
+            </div>
+            
+             <div onclick="openModal('zenith')" class="glass-card md:col-span-1 rounded-3xl p-8 relative overflow-hidden group cursor-pointer" data-tilt data-aos="zoom-in" data-aos-delay="600">
+                 <div class="relative z-10">
+                    <i class="fas fa-hammer text-2xl text-orange-500 mb-6 block"></i>
+                    <h3 class="text-xl font-bold mb-1">Zenith</h3>
+                    <p class="text-gray-500 text-xs">High-Efficiency Miner.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="border-t border-white/5 bg-black py-12 mt-20">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <h4 class="font-bold text-lg tracking-tight">NAYEEMDEV LABS</h4>
+                <p class="text-gray-500 text-sm">Badarganj, Bangladesh • Est. 2025</p>
+            </div>
+            <div class="flex gap-8">
+                <a href="https://github.com/owneraniex" target="_blank" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <i class="fab fa-github text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nayeem-dev-41b5a136b/" target="_blank" class="text-gray-400 hover:text-blue-500 transition-colors transform hover:scale-110">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+                <a href="https://x.com/owneraniex" target="_blank" class="text-gray-400 hover:text-white transition-colors transform hover:scale-110">
+                    <i class="fab fa-x-twitter text-2xl"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="project-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-md hidden-modal p-4">
+        <div class="bg-[#0a0a0a] border border-white/10 rounded-2xl max-w-2xl w-full p-8 relative shadow-2xl transform transition-all scale-100">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white transition-colors">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            <div id="modal-content">
+                <h2 id="m-title" class="text-3xl font-bold mb-2 text-white">Project Title</h2>
+                <span id="m-badge" class="px-2 py-1 bg-white/10 text-xs font-mono rounded text-neon-blue mb-4 inline-block">AI MODEL</span>
+                <p id="m-desc" class="text-gray-300 leading-relaxed mb-6">Description.</p>
+                <div class="border-t border-white/10 pt-4">
+                    <h4 class="text-sm font-bold text-gray-500 mb-2">TECH STACK</h4>
+                    <div id="m-stack" class="flex gap-2 flex-wrap"></div>
+                </div>
+                <div class="mt-8">
+                    <a href="https://github.com/owneraniex" target="_blank" class="block w-full py-3 bg-white text-black font-bold text-center rounded hover:bg-neon-blue hover:text-white transition-all">
+                        View Code on GitHub
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 
-    <section id="about" class="py-32 max-w-7xl mx-auto px-6">
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">THE <span class="text-neon-blue">ONE-MAN ARMY</span> BEHIND THE CODE</h2>
-                <p class="text-gray-400 mb-6 text-lg leading-relaxed">
-                    I don't just write code; I architect intelligent systems. From training 1.5B parameter models on consumer hardware to building privacy-focused browsers, my goal is simple: <span class="text-white">Optimize Everything.</span>
-                </p>
-                <div class="flex gap-4 mb-8">
-                    <div class="p-4 bg-white/5 rounded border border-white/10">
-                        <h4 class="text-2xl font-bold text-white">50+</h4>
-                        <p class="text-xs text-gray-500 font-mono">PROJECTS SHIPPED</p>
-                    </div>
-                    <div class="p-4 bg-white/5 rounded border border-white/10">
-                        <h4 class="text-2xl font-bold text-neon-purple">1.5B</h4>
-                        <p class="text-xs text-gray-500 font-mono">MODEL PARAMS</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="bento-card rounded-xl overflow-hidden font-mono text-sm shadow-2xl">
-                <div class="bg-white/10 px-4 py-2 flex gap-2 border-b border-white/5">
-                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                    <span class="ml-2 text-xs text-gray-400">nayeem@labs:~/secrets</span>
-                </div>
-                <div class="p-6 text-gray-300 space-y-2">
-                    <p><span class="text-green-400">➜</span> <span class="text-blue-400">~</span> whoami</p>
-                    <p class="text-white">Nayeem Dev (AI Engineer & Robotics Specialist)</p>
-                    
-                    <p class="mt-4"><span class="text-green-400">➜</span> <span class="text-blue-400">~</span> cat current_focus.txt</p>
-                    <p class="text-white">
-                        ["Blackwell Architecture", "Vibe Coding", "Embodied AI"]
-                    </p>
-
-                    <p class="mt-4"><span class="text-green-400">➜</span> <span class="text-blue-400">~</span> ./run_ambition.sh</p>
-                    <p class="text-yellow-400 animate-pulse">
-                        >> INITIALIZING GLOBAL DOMINANCE...<br>
-                        >> LOADING B200 CLUSTER...<br>
-                        >> SYSTEM READY.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="projects" class="py-20 max-w-7xl mx-auto px-6">
-        <h2 class="text-3xl font-bold font-mono mb-12 flex items-center gap-4">
-            <span class="text-neon-purple">02.</span> SELECTED WORKS
-        </h2>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
-            
-            <div class="bento-card md:col-span-2 rounded-2xl p-8 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-neon-purple/20 rounded-full blur-[80px] -z-10 group-hover:bg-neon-purple/30 transition-all"></div>
-                <div class="flex justify-between items-start mb-20">
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/10">
-                        <i class="fas fa-brain text-2xl text-neon-purple"></i>
-                    </div>
-                    <span class="font-mono text-xs border border-white/20 px-2 py-1 rounded-full">FLAGSHIP</span>
-                </div>
-                <h3 class="text-3xl font-bold mb-2">Nayeem-Blackwell-1.5B</h3>
-                <p class="text-gray-400 max-w-md">The "God Mode" SLM. Fine-tuned on NVIDIA B200 to outperform GPT-4 in specific coding & cybersecurity tasks.</p>
-            </div>
-
-            <div class="bento-card rounded-2xl p-8 flex flex-col justify-between group">
-                <div class="p-3 bg-white/5 rounded-lg w-fit border border-white/10">
-                    <i class="fas fa-globe text-2xl text-blue-400"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">Temba Browser</h3>
-                    <p class="text-gray-400 text-sm">Privacy-first, lightweight Linux browser with built-in crypto earning nodes.</p>
-                </div>
-            </div>
-
-            <div class="bento-card rounded-2xl p-8 flex flex-col justify-between group">
-                <div class="p-3 bg-white/5 rounded-lg w-fit border border-white/10">
-                    <i class="fas fa-bolt text-2xl text-yellow-400"></i>
-                </div>
-                <div>
-                    <h3 class="text-xl font-bold mb-2">TitanDL</h3>
-                    <p class="text-gray-400 text-sm">High-speed media downloader engine optimized for massive concurrency.</p>
-                </div>
-            </div>
-
-            <div class="bento-card md:col-span-2 rounded-2xl p-8 relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-neon-blue/20 rounded-full blur-[80px] -z-10 group-hover:bg-neon-blue/30 transition-all"></div>
-                <div class="flex justify-between items-start mb-20">
-                    <div class="p-3 bg-white/5 rounded-lg border border-white/10">
-                        <i class="fas fa-robot text-2xl text-neon-blue"></i>
-                    </div>
-                    <span class="font-mono text-xs border border-white/20 px-2 py-1 rounded-full">R&D</span>
-                </div>
-                <h3 class="text-3xl font-bold mb-2">Mobile-Action Agent</h3>
-                <p class="text-gray-400 max-w-md">Embodied AI logic derived from Google's datasets. Enables robots to perform physical task planning.</p>
-            </div>
-            
-        </div>
-    </section>
-
-    <footer id="contact" class="py-20 border-t border-white/10 bg-black">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl md:text-5xl font-bold mb-8">READY TO DEPLOY?</h2>
-            <p class="text-gray-400 mb-10">
-                Whether you need a custom SLM or a robotics consultation, my terminal is open.
-            </p>
-            <a href="mailto:admin@noral.qzz.io" class="inline-flex items-center gap-3 px-8 py-4 bg-neon-blue text-black font-bold font-mono rounded hover:bg-white transition-all">
-                <i class="fas fa-envelope"></i> SEND TRANSMISSION
-            </a>
-            
-            <div class="flex justify-center gap-8 mt-12 text-2xl text-gray-500">
-                <a href="https://github.com/NayeemDev-Labs" class="hover:text-white transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" class="hover:text-blue-500 transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-blue-400 transition-colors"><i class="fab fa-twitter"></i></a>
-            </div>
-            
-            <p class="mt-12 text-gray-600 font-mono text-sm">
-                &copy; 2025 NayeemDev Labs. Engineered in Bangladesh.
-            </p>
-        </div>
-    </footer>
-
     <script>
-        // Neural Network Animation (Simplified & Optimized)
-        const canvas = document.getElementById('neural-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
+        // 1. DATA
+        const projects = {
+            'blackwell': {
+                title: "Nayeem-Blackwell-1.5B",
+                badge: "GEMINI 2.5 PRO COMPETITOR",
+                desc: "The flagship project. A 1.5 Billion parameter model fine-tuned on the NVIDIA B200 architecture. It leverages custom datasets (Turso, Vibe Coding) to outperform Gemini 2.5 Pro in specific coding and cybersecurity benchmarks. Features agentic tool use and live internet access.",
+                stack: ["Python", "PyTorch", "Unsloth", "CUDA", "B200"]
+            },
+            'titan': {
+                title: "TitanDL Engine",
+                badge: "SYSTEMS ENGINEERING",
+                desc: "A Rust-based media downloader engine designed for maximum concurrency. TitanDL bypasses throttling by opening multiple thread streams, saturating network bandwidth to 99%. Used for enterprise-grade data scraping and media archiving.",
+                stack: ["Rust", "Actix", "Tokio", "FFmpeg"]
+            },
+            'temba': {
+                title: "Temba Browser",
+                badge: "PRIVACY & CRYPTO",
+                desc: "A lightweight Linux browser that blocks ads at the kernel level. Temba features a built-in background node that mines crypto efficiently while you browse, without impacting UI performance.",
+                stack: ["C++", "Qt", "Blockchain", "Linux"]
+            },
+            'shadow': {
+                title: "ShadowCord",
+                badge: "AI AGENT",
+                desc: "Not just a chatbot. ShadowCord is an autonomous Discord administrator that can detect raids, moderate toxic behavior, and answer technical support queries using RAG (Retrieval Augmented Generation).",
+                stack: ["Node.js", "Discord.js", "OpenAI API", "Vector DB"]
+            },
+            'zenith': {
+                title: "Zenith Miner",
+                badge: "BLOCKCHAIN",
+                desc: "An experimental high-efficiency miner optimized for low-power devices. Uses custom algorithm switching to find the most profitable coin to mine in real-time.",
+                stack: ["C", "CUDA", "Stratum Protocol"]
+            },
+            'senzor': {
+                title: "Senzor",
+                badge: "SECURITY",
+                desc: "A real-time system monitoring dashboard. Visualizes network traffic, CPU loads, and detects intrusion attempts instantly via heuristic analysis.",
+                stack: ["Go", "React", "WebSockets"]
+            },
+            'piuple': {
+                title: "Piuple",
+                badge: "DECENTRALIZED SOCIAL",
+                desc: "A decentralized social platform architecture. Piuple focuses on encrypted messaging and owning your own social graph, free from algorithm manipulation.",
+                stack: ["TypeScript", "Next.js", "IPFS", "GunDB"]
+            }
+        };
 
-        function resize() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        }
-        
-        class Particle {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.vx = (Math.random() - 0.5) * 0.3;
-                this.vy = (Math.random() - 0.5) * 0.3;
-            }
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-                if (this.x < 0 || this.x > width) this.vx *= -1;
-                if (this.y < 0 || this.y > height) this.vy *= -1;
-            }
-            draw() {
-                ctx.fillStyle = 'rgba(0, 243, 255, 0.3)';
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, 1.5, 0, Math.PI * 2);
-                ctx.fill();
-            }
-        }
-        
-        function init() {
-            resize();
-            particles = [];
-            for (let i = 0; i < 40; i++) particles.push(new Particle());
-        }
-        
-        function animate() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach((p, i) => {
-                p.update();
-                p.draw();
-                for (let j = i; j < particles.length; j++) {
-                    const p2 = particles[j];
-                    const dx = p.x - p2.x;
-                    const dy = p.y - p2.y;
-                    const d = Math.sqrt(dx*dx + dy*dy);
-                    if (d < 150) {
-                        ctx.strokeStyle = `rgba(0, 243, 255, ${0.1 - d/150*0.1})`;
-                        ctx.lineWidth = 1;
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.stroke();
-                    }
-                }
+        // 2. MODAL FUNCTIONS
+        function openModal(id) {
+            const data = projects[id];
+            const modal = document.getElementById('project-modal');
+            
+            document.getElementById('m-title').innerText = data.title;
+            document.getElementById('m-badge').innerText = data.badge;
+            document.getElementById('m-desc').innerText = data.desc;
+            
+            const stackContainer = document.getElementById('m-stack');
+            stackContainer.innerHTML = '';
+            data.stack.forEach(tech => {
+                stackContainer.innerHTML += `<span class="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-400">${tech}</span>`;
             });
-            requestAnimationFrame(animate);
+
+            modal.classList.remove('hidden-modal');
+            modal.classList.add('visible-modal');
         }
-        
-        window.addEventListener('resize', () => { resize(); init(); });
-        init();
-        animate();
+
+        function closeModal() {
+            const modal = document.getElementById('project-modal');
+            modal.classList.remove('visible-modal');
+            modal.classList.add('hidden-modal');
+        }
+
+        document.getElementById('project-modal').addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+
+        // 3. INIT LIBRARIES
+        AOS.init({ once: true, offset: 50, duration: 800 });
+
+        // 4. CURSOR LOGIC
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorOutline = document.querySelector('.cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            cursorOutline.animate({ left: e.clientX + 'px', top: e.clientY + 'px' }, { duration: 500, fill: "forwards" });
+        });
     </script>
 </body>
 </html>
