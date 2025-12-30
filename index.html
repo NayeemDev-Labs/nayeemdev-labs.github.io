@@ -163,7 +163,7 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
             <a href="#" class="interactable font-bold text-lg tracking-tight flex items-center gap-3" aria-label="Homepage">
                 <div class="w-2 h-2 bg-neon-cyan shadow-[0_0_10px_#00f3ff] rounded-full"></div>
-                <span class="font-mono dark:text-gray-200 text-black">NAYEEM<span class="text-neon-blue">_DEV</span></span>
+                <span class="font-mono dark:text-gray-100 text-black">NAYEEM<span class="text-neon-blue">_DEV</span></span>
             </a>
             <div class="flex items-center gap-4">
                 <button onclick="toggleTheme()" class="interactable w-10 h-10 rounded-full border dark:border-white/10 border-gray-200 flex items-center justify-center hover:bg-neon-blue hover:text-white transition-all" aria-label="Toggle Dark Mode">
@@ -322,7 +322,7 @@
                 <p id="m-desc" class="dark:text-gray-300 text-gray-700 leading-relaxed font-light">Description.</p>
             </div>
             <div class="border-t dark:border-white/10 border-black/10 pt-6">
-                <h4 class="text-xs font-bold text-gray-500 mb-4 font-mono">STACK_TRACE</h4>
+                <h3 class="text-xs font-bold text-gray-500 mb-4 font-mono">STACK_TRACE</h3>
                 <div id="m-stack" class="flex gap-2 flex-wrap mb-8"></div>
                 <a href="https://github.com/owneraniex" target="_blank" class="interactable block w-full py-4 bg-neon-blue text-white font-bold text-center rounded-lg hover:bg-blue-600 transition-colors shadow-lg">
                     ACCESS SOURCE CODE
@@ -332,9 +332,14 @@
     </div>
 
     <script>
-        // AOS Init - Wrapped in event listener to ensure load
+        // JS FIX: Wait for Load to prevent ReferenceError
         window.addEventListener('load', () => {
             AOS.init({ once: true, offset: 50 });
+            
+            // Check if VanillaTilt loaded correctly
+            if (typeof VanillaTilt !== 'undefined') {
+                VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02 });
+            }
         });
 
         // DATA
@@ -416,7 +421,7 @@
         }
 
         // INIT
-        VanillaTilt.init(document.querySelectorAll("[data-tilt]"), { max: 5, speed: 400, glare: true, "max-glare": 0.2, scale: 1.02 });
+        // (Moved to window.load at top)
     </script>
 </body>
 </html>
