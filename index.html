@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- 3. CUSTOM CSS (NO TAILWIND CDN) -->
+    <!-- 3. CUSTOM CSS (NO TAILWIND CDN - ZERO BUILD) -->
     <style>
         /* --- VARIABLES --- */
         :root {
@@ -35,6 +35,7 @@
             --neon-blue: #2997ff;
             --neon-cyan: #00f3ff;
             --neon-purple: #bf5af2;
+            --neon-yellow: #FACC15;
             --font-sans: 'Space Grotesk', system-ui, -apple-system, sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
         }
@@ -58,15 +59,7 @@
         a { text-decoration: none; color: inherit; transition: 0.3s; }
         
         /* --- UTILITIES --- */
-        .container { max-width: 1200px; margin: 0 auto; px-6; padding: 0 1.5rem; }
-        .flex { display: flex; }
-        .flex-col { flex-direction: column; }
-        .items-center { align-items: center; }
-        .justify-between { justify-content: space-between; }
-        .justify-center { justify-content: center; }
-        .gap-4 { gap: 1rem; }
-        .mt-4 { margin-top: 1rem; }
-        .mb-8 { margin-bottom: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
         .text-neon { color: var(--neon-blue); text-shadow: 0 0 20px rgba(41, 151, 255, 0.4); }
         .text-mono { font-family: var(--font-mono); }
         .hidden { display: none; }
@@ -185,23 +178,30 @@
     <!-- ICONS (FontAwesome CDN - Defer loading) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
 
-    <!-- 4. GOD TIER SCHEMA (Knowledge Graph Data) -->
+    <!-- 4. GOD TIER SCHEMA (COMBAT MODE) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Person",
       "name": "Nayeem Sarkar",
-      "alternateName": ["Nayeem Dev", "owneraniex"],
+      "alternateName": ["Nayeem Dev", "owneraniex", "NayeemDev Labs Founder"],
+      "jobTitle": "Systems Architect",
+      "disambiguatingDescription": "The real founder of NayeemDev Labs and 'owneraniex'. Specialized in C++ and AI. Distinct from Md Nayeem Hossain (Web Developer).",
       "url": "https://nayeemdev-labs.github.io",
       "image": "https://nayeemdev-labs.github.io/nayeem-sarkar-founder.png",
-      "jobTitle": "Systems Architect",
       "worksFor": {
         "@type": "Organization",
-        "name": "NayeemDev Labs"
+        "name": "NayeemDev Labs",
+        "url": "https://nayeemdev-labs.github.io",
+        "founder": {
+            "@type": "Person",
+            "@id": "https://nayeemdev-labs.github.io"
+        }
       },
       "sameAs": [
         "https://github.com/owneraniex",
-        "https://x.com/owneraniex"
+        "https://x.com/owneraniex",
+        "https://linkedin.com/in/nayeem-dev-41b5a136b/" 
       ],
       "knowsAbout": ["C++", "Artificial Intelligence", "Rust", "System Architecture", "Network Security"]
     }
