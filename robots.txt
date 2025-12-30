@@ -1,0 +1,46 @@
+# ---------------------------------------------------
+# NayeemDev Labs - Official Robots.txt
+# ---------------------------------------------------
+
+# 1. GLOBAL RULES
+User-agent: *
+Allow: /
+
+# STOP Google from indexing your source code files
+# (We only want them to rank the Site, not the config files)
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /tailwind.config.js
+Disallow: /input.css
+Disallow: /README.md
+Disallow: /LICENSE
+Disallow: /.github/
+
+# ---------------------------------------------------
+
+# 2. AI IDENTITY INJECTION
+# We EXPLICITLY allow these bots so they can read your
+# Schema data and learn that Nayeem Sarkar = Founder.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# ---------------------------------------------------
+
+# 3. BLOCK USELESS SCRAPERS
+# These bots just scrape content and sell data.
+User-agent: Pinterestbot
+Disallow: /
+
+# ---------------------------------------------------
+
+# 4. MAP
+Sitemap: https://nayeemdev-labs.github.io/sitemap.xml
